@@ -29,6 +29,7 @@ btn.addEventListener("click", function () {
   hasil.append(newPara);
 });
 
+// Trigger Button with Enter (keyCode == 13 is Enter)
 var input = document.getElementById("myNumber");
 input.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {

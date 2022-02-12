@@ -1,3 +1,20 @@
+class DataPokemon {
+  constructor(id, name, img, type) {
+    this.id = id;
+    this.name = name;
+    this.img = img;
+    this.type = type;
+  }
+
+  info() {
+    const getDiv = document.getElementById("hasil");
+    const newDiv = document.createElement("div");
+    newDiv.className = `col border border-dark ${this.type}`;
+    newDiv.innerHTML = `<p>${this.id}: ${this.name}</p> <img src="${this.img}"> <p>type: ${this.type}</p>`;
+    return getDiv.append(newDiv);
+  }
+}
+
 async function fetchData() {
   const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=30", {
     method: "GET",
@@ -9,23 +26,6 @@ async function fetchData() {
     fetch(results[i].url)
       .then((response) => response.json())
       .then((response) => {
-        class DataPokemon {
-          constructor(id, name, img, type) {
-            this.id = id;
-            this.name = name;
-            this.img = img;
-            this.type = type;
-          }
-
-          info() {
-            const getDiv = document.getElementById("hasil");
-            const newDiv = document.createElement("div");
-            newDiv.className = `col border border-dark ${this.type}`;
-            newDiv.innerHTML = `<p>${this.id}: ${this.name}</p> <img src="${this.img}"> <p>type: ${this.type}</p>`;
-            return getDiv.append(newDiv);
-          }
-        }
-
         const dataPoke = new DataPokemon(
           response.id,
           response.name,
